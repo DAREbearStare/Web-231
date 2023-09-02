@@ -1,0 +1,36 @@
+font-family: 'Oswald', sans-serif;
+
+#container {
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+h1,h2,h3 {
+    background-color: #3C275A;
+    color: white;
+    border: solid;
+    border: 1px; 
+    padding: 10px;
+
+}
+ 
+a:hover {
+    color: #3C275A;
+  }
+
+a {
+    color: #453674;
+}
+a:visited {
+    color: #3C275A;
+}
+ul{
+    border: dotted 1px red;
+}
+
+.home {
+    
+}

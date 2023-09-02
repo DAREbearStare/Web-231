@@ -1,0 +1,59 @@
+<!--Title: Temperature Conversion App
+    Author: Alex DeLira
+    Date:
+    Description: My attempt to make the Temp Conversion App, FreeCodeCamp Helped
+-->
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>WEB 231 - Enterprise JavaScript I</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="delira-temp-conversion.css" />
+  </head>
+
+  <body>
+    <h1>Welcome to the Temperature Conversion App!</h1>
+
+    <div id="card1">
+      <h3 id="cardtitle">Fahrenheit to Celsius Converter</h3>
+      <div id="cardcontent">
+        <div id="form">
+          <div class="formfield">
+            <label for="txtFahrenheit">Fahrenheit value:</label>
+            <input
+              type="text"
+              id="txtFahrenheit"
+              name="txtFahrenheit"
+              class="input"
+            />
+            <div class="formfield">
+              <button id="btnConvert" type="button" class="btn btnprimary">
+                Convert Temperature
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="card2">
+      <div class="cardtitle">Conversion Results</div>
+      <div class="cardcontent" id="conversionResults"></div>
+    </div>
+
+    <script type="text/JavaScript">
+          function myFunction() {
+          let fahrenheit = document.getElementById("txtFahrenheit").value;
+          let conversionResults = ((parseFloat(fahrenheit) - 32) / 1.8).toFixed(2);
+          document.getElementById("conversionResults").innerHTML = conversionResults;
+      }
+    </script>
+
+    <footer>
+      <a href="delira-temp-conversion.html">HOME</a>
+    </footer>
+  </body>
+</html>

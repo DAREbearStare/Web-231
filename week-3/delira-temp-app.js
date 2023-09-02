@@ -1,0 +1,2 @@
+let fahrenheit
+let conversionResults
