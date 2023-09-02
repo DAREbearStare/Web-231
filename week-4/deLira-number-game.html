@@ -41,16 +41,16 @@
     <script type="text/JavaScript">
 // This is the random math generator 
 
-  const rnd = Math.floor((Math.random() * 10) + 1); //generate a random number between 1 and 10
-        const btnSubmit = document.getElementById("btnSubmit");//getting the button with an ID of btnSubmit
+  const rnd = Math.floor((Math.random() * 10) + 1); 
+        const btnSubmit = document.getElementById("btnSubmit");
         const result = document.getElementById("result")
-        btnSubmit.addEventListener("click", function () { //added click eventlistener for btnSubmit and calling the function on it
-            const myNumber = document.getElementById("txtMyNumber").value; //getting the input value from the txtMyNumber input field
-            if (rnd < myNumber) { // checking if the random number is less than my number
-                result.textContent = "The number is less than " + myNumber; //changing the result to appropriate text
-            } else if (rnd > myNumber) { //checking to see if the random number is greater than random number
+        btnSubmit.addEventListener("click", function () { 
+            const myNumber = document.getElementById("txtMyNumber").value; 
+            if (rnd < myNumber) { 
+                result.textContent = "The number is less than " + myNumber; 
+            } else if (rnd > myNumber) { 
                 result.textContent = "The number is greater than " + myNumber
-            } else { //if the random and my number are equal
+            } else { 
                 result.textContent = "Congratulations! You picked the correct number!"
             }
         })
