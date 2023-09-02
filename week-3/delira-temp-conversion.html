@@ -40,20 +40,26 @@
     </div>
 
     <div id="card2">
-      <div class="cardtitle">Conversion Results</div>
+      <div class="cardtitle">Conversion Results:</div>
       <div class="cardcontent" id="conversionResults"></div>
     </div>
 
     <script type="text/JavaScript">
-          function myFunction() {
-          let fahrenheit = document.getElementById("txtFahrenheit").value;
-          let conversionResults = ((parseFloat(fahrenheit) - 32) / 1.8).toFixed(2);
-          document.getElementById("conversionResults").innerHTML = conversionResults;
-      }
+
+      document.getElementById("btnConvert").onclick = function () {
+      const fahrenheit = document.getElementById("txtFahrenheit").value;
+      const celsius = parseFloat(((parseFloat(fahrenheit) - 32) / 1.8).toFixed(2));
+       if (!isNaN(celsius)) {
+          document.getElementById("conversionResults").innerHTML = celsius;
+        } else {
+          alert("ENTER A VALID NUMBER!");
+        }
+      };
     </script>
 
-    <footer>
-      <a href="delira-temp-conversion.html">HOME</a>
-    </footer>
+    <a
+      href="C:\Users\lxdel\Desktop\Bellevue Univ\web231-Enterprise JavaScript I\buwebdevCODE\Web-231\week-1\index.html"
+      >Home</a
+    >
   </body>
 </html>

@@ -1,0 +1,65 @@
+<!--Title: Temperature Conversion App
+    Author: Alex DeLira
+    Date:9/2/2023
+    Description: My attempt to make the Temp Conversion App, 
+    FreeCodeCamp Helped,W3schools w3schools.com, Do Factory dofactory.com
+-->
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" lang="en" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="deLira-number-game.css" />
+  </head>
+  <body>
+    <h1 class="app-header">Welcome to the Numbers Game!</h1>
+
+    <!--This card is where numbers are input-->
+    <div id="card1">
+      <h3 id="card-title">Pick a number between 1 and 10</h3>
+      <div id="cardcontent">
+        <div class="formfield">
+          <label for="txtMyNumber">Guess the number:</label>
+          <input type="text" id="txtMyNumber" />
+        </div>
+
+          <button id="btnSubmit" type="submit">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <!--This card has the results-->
+    <div id="card2">
+      <div class="cardtitle">Conversion Results:</div>
+      <div class="cardcontent"><p id="result"></p></div>
+    </div> 
+
+    <script type="text/JavaScript">
+// This is the random math generator 
+
+  const rnd = Math.floor((Math.random() * 10) + 1); //generate a random number between 1 and 10
+        const btnSubmit = document.getElementById("btnSubmit");//getting the button with an ID of btnSubmit
+        const result = document.getElementById("result")
+        btnSubmit.addEventListener("click", function () { //added click eventlistener for btnSubmit and calling the function on it
+            const myNumber = document.getElementById("txtMyNumber").value; //getting the input value from the txtMyNumber input field
+            if (rnd < myNumber) { // checking if the random number is less than my number
+                result.textContent = "The number is less than " + myNumber; //changing the result to appropriate text
+            } else if (rnd > myNumber) { //checking to see if the random number is greater than random number
+                result.textContent = "The number is greater than " + myNumber
+            } else { //if the random and my number are equal
+                result.textContent = "Congratulations! You picked the correct number!"
+            }
+        })
+
+    </script>
+  </body>
+  <a
+    id="home"
+    href="C:\Users\lxdel\Desktop\Bellevue Univ\web231-Enterprise JavaScript I\buwebdevCODE\Web-231\week-1\index.html"
+    >Home</a
+  >
+</html>
