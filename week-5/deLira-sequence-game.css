@@ -1,0 +1,93 @@
+body {
+    color: #000;
+    text-align: center;
+}
+
+
+.app-header {
+    text-align: center;
+    background-color: transparent;
+    color: #000;
+    border: none;
+    color: #3c275a;
+}
+
+form {
+    margin-top: 10px;
+}
+/* this is the top part of the selection form*/
+#card1 {
+    border: 1px solid;
+    margin-bottom: 30px;
+    padding: 10px 20px;
+    box-shadow: 0px 1px 3px 0px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+/*The Title*/
+#card-title {
+    text-align: center;
+    font-size: 28px;
+    color: #3c275a;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+/*Form field and label*/
+#form-field {
+    margin-bottom: 20px;
+}
+/*Form field and label*/
+.form-field label {
+    color: #3c275a;
+    text-align: center;
+}
+/*Form field and label*/
+.form-field input {
+    padding: 5px;
+}
+/*Form field and label*/
+.form-field button {
+    background-color: #3c275a;
+    color: #fff;
+    padding: 6px;
+    width: 200px;
+
+}
+
+#result {
+    text-align: center;
+    margin: 0;
+}
+/*The button*/
+#btnDisplaySequence{
+    background-color: #3c275a;
+    display: inline-block;
+    text-align: center;
+    color: white;
+    padding: 5px 10px 5px;
+}
+/*I added another div for the button just to add a margin*/
+.butt{
+margin-top: 10px;
+}
+/*The bottom box that shows results*/
+#card2{
+    text-align: center;
+        font-size: 18px;
+        color: #3c275a;
+        margin-top: 0;
+        margin-bottom: 5px;
+}
+.cardtitle {
+   border-style: outset;
+        margin-bottom: 30px;
+        padding: 20px 20px;
+        box-shadow: 0px 1px 3px 0px;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+}
+

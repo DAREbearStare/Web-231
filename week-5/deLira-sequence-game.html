@@ -1,0 +1,122 @@
+<!--Title: Temperature Conversion App
+    Author: Alex DeLira
+    Date:9/2/2023
+    Description: DeLira Sequence Game 
+    FreeCodeCamp Helped,W3schools w3schools.com,Web-231 GitHub repository
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>WEB 231 - Enterprise JavaScript 1</title>
+    <link rel="stylesheet" href="deLira-sequence-game.css" />
+  </head>
+  <body>
+    <h1 class="app-header">Welcome to the Sequence Game!</h1>
+
+    <!--The Sequence selection card-->
+    <div id="card1">
+      <h3 id="card-title">Sequence Selection Form</h3>
+      <div id="cardcontent">
+        <label id="form-field">Choose a number sequence</label>
+        <select class="drop-down-menu" id="sequence">
+          <option value="select;text">--Select--</option>
+          <option value="fibonacci;text">Fibonacci Sequence</option>
+          <option value="even;text">Even Numbers</option>
+          <option value="odd;text">Odd Numbers</option>
+        </select>
+
+        <div class="butt">
+          <!--Button-->
+          <button onclick="numSequence()" id="btnDisplaySequence" type="submit">
+            Display Sequence
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!--This Sequence results-->
+    <div id="card2">
+      <div class="cardtitle">Sequence Results:</div>
+      <div class="card-content"><p id="result"></p></div>
+    </div>
+
+    <!-- This is the JavaScript Part-->
+    <script type="Text/JavaScript">
+
+
+
+
+              // If,else,else if statement, while, do-while, and for loops are used to produce different sequence results.
+
+           function numSequence() {
+                  let choice = document.getElementById("sequence").value;
+                  if (choice ==="select") {
+                    //Alert will pop up when onclick with no option is selected.
+
+                    alert("Invalid selection, please try again!")
+                  }
+                   // If fibonacci is selected
+                  else if (choice === "fibonacci"){
+
+                    // Fibonacci sequence numbers start at 0.
+                    let num1 = 0, num2 = 1, next;
+                    let fibonacciSequenceText = "";
+                    while (num1<40) {
+                   fibonacciSequenceText += num1 + ", ";
+                    next = num1 + num2;
+                    num1 = num2;
+                    num2 = next;
+                    }
+
+                     // slice(0, -2) will remove the last two characters of the string.
+
+                    document.getElementById("card-content").innerHTML = fibonacciSequenceText.slice(0,-2);
+
+                  }
+                   //  Even is selected do…while loop
+
+                  else if (choice === "even") {
+
+                    // Even sequence numbers start at 2.
+                    let evenSequenceText = "";
+                    let num1 = 2;
+                    let next;
+                    do {
+                       evenSequenceText += num1 + ", ";
+                       next = num1 + 2;
+                       num1 = next;
+                       console.log("The even Sequence is "+ evenSequenceText);
+                    }
+                    while (num1<20)
+
+                     // slice(0, -2) will remove the last two characters of the string.
+
+                    document.getElementById("card-content").innerHTML = evenSequenceText.slice(0, -2);
+
+                  }
+                  // If odd is selected
+
+                  else if (choice === "odd"){
+
+                    // Odd sequence numbers start at 1.
+
+                    let oddSequenceText = "";
+                    for(let num=1; num<20; num+=2){
+                      oddSequenceText += num + ", ";
+                      console.log("The Odd Sequence is "+ oddSequenceText);
+                    }
+
+      // slice(0, -2) will remove the last two characters of the string.
+                  document.getElementById("card-content").innerHTML = oddSequenceText.slice(0,-2);
+
+                   }
+                  }
+    </script>
+
+    <!--The Return Button to go to the Home Page-->
+    <a href="../week-1/index.html">Return</a>
+  </body>
+</html>
