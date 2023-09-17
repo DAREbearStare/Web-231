@@ -1,0 +1,175 @@
+<!--Title: Temperature Conversion App
+    Author: Alex DeLira
+    Date:9/15/2023
+    Description: DeLira In-N-Out Books 
+    Sources: My previous assignments, 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>WEB 231 - Enterprise JavaScript 1</title>
+  <link rel="stylesheet" href="deLira-in-n-out-books.css" />
+</head>
+
+<body>
+
+  <main id="container">
+
+    <h1 class="app-header">Welcome to In-N-Out-Books</h1>
+    <div class="card1">
+      <p id="card-title">
+        My Favorites</p>
+      <div class="listing">
+        <form>
+
+          <label for="choose-listing"></label>
+          Choose a listing
+          </label>
+          <select class="drop-down-menu" id="favoriteList">
+            <option value="select" disable selected hidden>
+              --Select--
+            </option>
+            <option value="books">
+              Top 3 Favorite Books
+            </option>
+            <option value="authors">
+              Top 3 Favorite Authors
+            </option>
+          </select>
+        </form>
+      </div>
+
+
+      <!--Button -->
+      <button id="btnDisplaySequence">
+        Display Listing
+      </button>
+
+
+      <!--Botton Card-->
+
+
+      <div class="wrapper">
+        <div class="card2">
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <!-- This is the JavaScript Part-->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      //Get the HTML elements
+      const favoriteList = document.getElementById('favoriteList');
+      const btnDisplayListing = document.getElementById('btnDisplayListing');
+      const tableDisplay = document.getElementById('tableDisplay');
+      const tableTitle = document.querySelector('.table-title');
+
+      // books objects
+      const favoriteBooks = [
+        {
+          ISBN: "0261103571",
+          Title: "The Fellowship of the Ring",
+          Pages: 432
+        },
+
+        {
+          ISBN: "1514297272",
+          Title: "The Two Towers",
+          Pages: 322
+        },
+
+        {
+          ISBN: "1514298139",
+          Title: "The Return of the King",
+          Pages: 432
+        }
+      ];
+
+      // author objects
+      const favoriteAuthors = [
+        {
+          Name: "John Ronald Reuel Tolkien",
+          Genre: "Fantasy"
+        },
+
+        {
+          Name: "Franklin Patrick Herbert Jr.",
+          Genre: "Science Fiction"
+        },
+
+        {
+          Name: "Clive Staples Lewis",
+          Genre: "Fantasy, Science Fiction, Children's Literature"
+        }
+      ];
+
+
+      function generateTable(table) {
+
+        if (table === favoriteBooks) {
+
+          let newTable = '<table class="table"><tr class="table-titles"><th class="table-border">ISBN</th><th class="table-border">Title</th><th class="table-border">Pages</th></tr>';
+
+
+          table.forEach(book => {
+            newTable += `<tr class="table-content"><td class="table-border">${book.ISBN}</td><td class="table-border">${book.Title}</td><td class="table-border">${book.Pages}</td></tr>`;
+          });
+
+
+          newTable += '</table>';
+          //Return new table
+          return newTable;
+        }
+
+        else if (table === favoriteAuthors) {
+
+          let newTable = '<table class="table"><tr class="table-titles"><th class="table-border">Name</th><th class="table-border">Genre</th></tr>';
+
+          table.forEach(author => {
+            newTable += `<tr class="table-content"><td class="table-border">${author.Name}</td><td class="table-border">${author.Genre}</td></tr>`;
+          });
+
+
+          newTable += '</table>';
+
+          return newTable;
+        }
+      }
+
+
+      btnDisplayListing.addEventListener('click', function () {
+
+        if (favoriteList.value === 'books') {
+
+          tableDisplay.innerHTML = generateTable(favoriteBooks);
+          tableTitle.textContent = "Top 3 Favorite Books";
+          tableTitle.style.display = "block";
+        }
+
+
+        else if (favoriteList.value === 'authors') {
+
+          tableDisplay.innerHTML = generateTable(favoriteAuthors);
+          tableTitle.textContent = "Top 3 Favorite Authors";
+          tableTitle.style.display = "block";
+        }
+      });
+    });
+
+  </script>
+
+  <!--The Return Button to go to the Home Page-->
+  <a href="../week-1/index.html">Return</a>
+</body>
+
+</html>
