@@ -1,0 +1,283 @@
+<!--Title: Temperature Conversion App
+    Author: Alex DeLira
+    Date:9/24/2023
+    Description: DeLira Javason 
+    Sources: My previous assignments, WEB 231 Bellevue GitHub, MDN Web docs 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>WEB 231 – Enterprise JavaScript I</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="deLira-javazon.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <h1 class="app-header">
+            Welcome to the Javazon App!
+        </h1>
+
+        <div class="card">
+            <p class="card-title">
+                Javazon Selection Form
+            </p>
+
+            <form>
+                <label for="choose-listing">
+                    Choose a listing
+                </label>
+                <select id="listing" class="drop-down-menu">
+                    <option value="select" disabled selected hidden>
+                        --Select--
+                    </option>
+                    <option value="products">
+                        Products
+                    </option>
+                    <option value="services">
+                        Services
+                    </option>
+                    <option value="employees">
+                        Employees
+                    </option>
+                </select>
+            </form>
+
+            <button id="btnDisplayListing">
+                Display Listing
+            </button>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="card">
+            <div class="products">
+                <p class="card-title table-title">
+                    Javazon Products
+                </p>
+                <table id="productsTable" class="table">
+                    <thead>
+                        <tr>
+                            <th class="table-titles table-border">Product ID</th>
+                            <th class="table-titles table-border">Description</th>
+                            <th class="table-titles table-border">Price</th>
+                            <th class="table-titles table-border">Quantity</th>
+                            <th class="table-titles table-border">Total Value</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div class="services">
+                <p class="card-title table-title">
+                    Javazon Services
+                </p>
+                <table id="servicesTable" class="table">
+                    <thead>
+                        <tr>
+                            <th class="table-titles table-border">Service ID</th>
+                            <th class="table-titles table-border">Description</th>
+                            <th class="table-titles table-border">Hourly Rate</th>
+                            <th class="table-titles table-border">Minimum Billable hours</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div class="employees">
+                <p class="card-title table-title">
+                    Javazon Employees
+                </p>
+                <table id="employeesTable" class="table">
+                    <thead>
+                        <tr>
+                            <th class="table-titles table-border">Employee ID</th>
+                            <th class="table-titles table-border">Last Name</th>
+                            <th class="table-titles table-border">First Name</th>
+                            <th class="table-titles table-border">Salary</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="" async defer>
+        document.addEventListener('DOMContentLoaded', function () {
+            //HTML elements
+            const listingElement = document.getElementById('listing');
+            const btnDisplayListing = document.getElementById('btnDisplayListing');
+            const productsDiv = document.querySelector('.products');
+            const servicesDiv = document.querySelector('.services');
+            const employeeDiv = document.querySelector('.employees');
+
+            //Constructors
+            class Product {
+                constructor(id, description, price, quantity) {
+                    this.id = id;
+                    this.description = description;
+                    this.price = parseFloat(price).toFixed(2);
+                    this.quantity = parseFloat(quantity);
+                    this.totalValue = (this.price * this.quantity).toFixed(2);
+                }
+            }
+
+            class Service {
+                constructor(id, description, hourlyRate, min) {
+                    this.id = id;
+                    this.description = description;
+                    this.hourlyRate = parseFloat(hourlyRate).toFixed(2);
+                    this.min = parseFloat(min);
+                }
+            }
+
+            class Employee {
+                constructor(id, lastName, firstName, salary) {
+                    this.id = id;
+                    this.lastName = lastName;
+                    this.firstName = firstName;
+                    this.salary = parseFloat(salary).toFixed(2);
+                }
+            }
+
+            //Creating 5 product objects
+            const product1 = new Product("9781118008188", "HTML and CSS: Design and Build Websites", 22.26, 10);
+            const product2 = new Product("9781491952023", "JavaScript: The Definitive Guide 7/E", 41.33, 7);
+            const product3 = new Product("9781449331818", "Learning JavaScript Design Patterns 1/E", 25.99, 3);
+            const product4 = new Product("9781617292422", "Express in Action: Writing, building, and testing Node.js applications 1/E", 34.91, 3);
+            const product5 = new Product("9781491954461", "MongoDB The Definitive Guide", 33.70, 8);
+
+            //Creating 3 services objects
+            const service1 = new Service("100", "Website Design", 150, 25);
+            const service2 = new Service("101", "DevOps Consulting", 125, 50);
+            const service3 = new Service("102", "Database Design", 125, 15);
+
+            //Creating 5 employee objects
+            const employee1 = new Employee("1007", "Beethoven", "Ludwig", 13.99);
+            const employee2 = new Employee("1008", "Bach", "Johann", 22.30);
+            const employee3 = new Employee("1009", "Mozart", "Wolfgang", 19.50);
+            const employee4 = new Employee("1010", "Brahms", "Johannes", 12);
+            const employee5 = new Employee("1011", "Haydn", "Joseph", 32.50);
+
+
+            //one single object array
+            const products = [product1, product2, product3, product4, product5];
+            const services = [service1, service2, service3];
+            const employees = [employee1, employee2, employee3, employee4, employee5];
+
+            //click event listener to btnDisplayListing
+            btnDisplayListing.addEventListener('click', function () {
+                //var for the value of the selected option
+                const selectedOption = listingElement.value;
+                //var for the table body content
+                let tableBody;
+
+                //Switch case between selected option
+                switch (selectedOption) {
+                    case 'products':
+                        //Set the tableBody var
+                        tableBody = document.querySelector('#productsTable tbody');
+                        //Clear the innerHTML
+                        tableBody.innerHTML = '';
+
+                        //Loop through each product
+                        products.forEach(product => {
+                            //Create a new row
+                            const row = document.createElement('tr');
+                            //Add the class table-content to the row element
+                            row.classList.add('table-content');
+                            //Create the innerHTML of the row with the product data
+                            row.innerHTML = `
+                            <td class="table-border">${product.id}</td>
+                            <td class="table-border">${product.description}</td>
+                            <td class="table-border">${product.price}</td>
+                            <td class="table-border">${product.quantity}</td>
+                            <td class="table-border">${product.totalValue}</td>`;
+
+                            //Append the row as a child of the table body
+                            tableBody.appendChild(row);
+                            //Display the products table only
+                            productsDiv.style.display = 'block';
+                            servicesDiv.style.display = 'none';
+                            employeeDiv.style.display = 'none'
+                        });
+                        break;
+                    case 'services':
+                        //Set the tableBody var 
+                        tableBody = document.querySelector('#servicesTable tbody');
+                        //Clear the innerHTML
+                        tableBody.innerHTML = '';
+
+                        //Loop through each service in array
+                        services.forEach(service => {
+                            //Create a new row
+                            const row = document.createElement('tr');
+                            //Add the class table-content to the row element
+                            row.classList.add('table-content');
+                            //Create the innerHTML of the row with the service data
+                            row.innerHTML = `
+                            <td class="table-border">${service.id}</td>
+                            <td class="table-border">${service.description}</td>
+                            <td class="table-border">${service.hourlyRate}</td>
+                            <td class="table-border">${service.min}</td>`;
+
+
+                            tableBody.appendChild(row);
+
+                            productsDiv.style.display = 'none';
+                            servicesDiv.style.display = 'block';
+                            employeeDiv.style.display = 'none';
+                        });
+                        break;
+                    case 'employees':
+
+                        tableBody = document.querySelector('#employeesTable tbody');
+
+                        tableBody.innerHTML = '';
+
+                        //Loop through each employee in employees array
+                        employees.forEach(employee => {
+                            //Create a new row
+                            const row = document.createElement('tr');
+
+                            row.classList.add('table-content');
+
+                            row.innerHTML = `
+                        <td class="table-border">${employee.id}</td>
+                        <td class="table-border">${employee.lastName}</td>
+                        <td class="table-border">${employee.firstName}</td>
+                        <td class="table-border">${employee.salary}</td>`;
+
+
+                            tableBody.appendChild(row);
+
+                            productsDiv.style.display = 'none';
+                            servicesDiv.style.display = 'none';
+                            employeeDiv.style.display = 'block';
+                        });
+                        break;
+                    default:
+                        break;
+                }
+            });
+        });
+
+    </script>
+    <!--The Return Button to go to the Home Page-->
+    <a href="../week-1/index.html">Return</a>
+</body>
+
+</html>

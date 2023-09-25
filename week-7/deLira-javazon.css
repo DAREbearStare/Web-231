@@ -1,0 +1,93 @@
+body {
+  color: #000;
+  text-align: center;
+}
+
+.wrapper {
+  display: grid;
+  place-items: center;
+}
+
+.card {
+  margin-bottom: 20px;
+  width: 600px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-title {
+  color: #4f3674;
+  font-size: 28px;
+  text-align: center;
+}
+
+form {
+  margin-left: 15%;
+}
+
+#btnDisplayListing {
+  padding: 15px;
+  margin-top: 30px;
+  margin-left: 15%;
+  margin-bottom: 30px;
+  width: 270px;
+  font-size: 15px;
+  background-color: #4f3674;
+  border: 2px solid #000;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#btnDisplayListing:hover {
+  background-color: #d6a800;
+  color: #4f3674;
+}
+
+.return-home {
+  margin-left: 34.3%;
+}
+
+.products {
+  display: none;
+}
+
+.services {
+  display: none;
+}
+
+.employees {
+  display: none;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 30px;
+  text-align: left;
+  text-indent: 2px;
+  border-collapse: collapse;
+}
+
+.table-titles {
+  background-color: #4f3674;
+  color: #fff;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+}
+
+.table-border {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table-content {
+  height: 35px;
+  transition: all 0.3s ease;
+}
+
+.table-content:hover {
+  background-color: #d6a800;
+  color: #3c275a;
+  cursor: default;
+}
